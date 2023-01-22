@@ -1,0 +1,11 @@
+<div class="chat-message-{% if message.sender.name == user.name %}right{% else %}left{%endif%} pb-4">
+    <div>
+        <img src="/static/avatar.png"
+            class="rounded-circle mr-1" alt="{{message.sender.name}}{% if message.sender.name == user.name %}(You){%endif%}" width="40" height="40">
+        <div class="text-muted small text-nowrap mt-2">{{ message.created.ctime() }}</div>
+    </div>
+    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+        <div class="font-weight-bold mb-1"><b>{{message.sender.name}}{% if message.sender.name == user.name %}(You){%endif%}</b></div>
+       {{ message.value }}
+    </div>
+</div>

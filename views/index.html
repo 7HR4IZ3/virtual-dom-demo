@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+
+
+    <title>white chat - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/jquery.js"></script>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <script src="/static/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <main class="content">
+        <div class="container p-0">
+            <h1 class="h3 mb-3">Rooms</h1>
+            <div class="card">
+                <div class="row g-0" id="chat_view">
+                    <div class="col-12 col-lg-5 col-xl-3 border-right">
+                        <div class="px-4 d-none d-md-block">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <input type="text" class="form-control my-3" placeholder="Search..">
+                                </div>
+                            </div>
+                        </div>
+                        <section id="rooms_list" class="d-flex flex-column">
+                            <div class="d-flex flex-row form-group px-4">
+                                <input name="user_name" placeholder="Username" class="form-control my-3"/>
+                                <button onclick="server.set_username()" class="btn btn-primary btn-sm mx-2 my-3">Set Username</button>
+                            </div>
+                            <div class="d-flex flex-row form-group px-4">
+                               <input name="room_name" placeholder="My Room" class="form-control my-3"/>
+                               <button onclick="server.create_room()" class="btn btn-primary btn-sm mx-2 my-3">Create Room</button>
+                            </div>
+                            <section id="rooms_list_all">
+                                {% for room in rooms %}
+                                    {% include '_room_details.html' %}
+                                {% endfor %}
+                            </section>
+                        </section>
+                        <hr class="d-block d-lg-none mt-1 mb-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <style type="text/css">
+        body {
+            margin-top: 20px;
+        }
+
+        .chat-online {
+            color: #34ce57
+        }
+
+        .chat-offline {
+            color: #e4606d
+        }
+
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow-y: scroll
+        }
+
+        .chat-message-left,
+        .chat-message-right {
+            display: flex;
+            flex-shrink: 0
+        }
+
+        .chat-message-left {
+            margin-right: auto
+        }
+
+        .chat-message-right {
+            flex-direction: row-reverse;
+            margin-left: auto
+        }
+
+        .py-3 {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        .px-4 {
+            padding-right: 1.5rem !important;
+            padding-left: 1.5rem !important;
+        }
+
+        .flex-grow-0 {
+            flex-grow: 0 !important;
+        }
+
+        .border-top {
+            border-top: 1px solid #dee2e6 !important;
+        }
+    </style>
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>
